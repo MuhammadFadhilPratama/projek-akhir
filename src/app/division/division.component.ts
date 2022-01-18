@@ -2,25 +2,24 @@ import { Component, OnInit } from '@angular/core';
 import { Division } from '../model/division.model';
 import { DivisionService } from '../services/division.service';
 
-
 @Component({
-  selector: 'app-divisions',
-  templateUrl: './divisions.component.html',
-  styleUrls: ['./divisions.component.css']
+  selector: 'app-division',
+  templateUrl: './division.component.html',
+  styleUrls: ['./division.component.css']
 })
-export class DivisionsComponent implements OnInit {
+export class DivisionComponent implements OnInit {
 
   divisions?:Division[];
-  currentDivisions:Division={};
+  currentDivision:Division={};
   name='';
-  constructor(private divisionsService:DivisionService) { }
+  constructor(private divisionService:DivisionService) { }
 
   ngOnInit(): void {
-    this.retrieveDivisions()
+    this.retrieveDivision()
   }
 
-  retrieveDivisions():void{
-    this.divisionsService.getAll()
+  retrieveDivision():void{
+    this.divisionService.getAll()
       .subscribe(
         data=>{
           this.divisions=data;
@@ -30,6 +29,6 @@ export class DivisionsComponent implements OnInit {
           console.log(error)
         }
       )
-  }
 
+  }
 }
